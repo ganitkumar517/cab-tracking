@@ -2,121 +2,68 @@ const WebSocket = require("ws");
 
 const wss = new WebSocket.Server({ port: 8080 });
 
-const generateRandomCoords = () => ({
-    latitude: 28.60 + Math.random() * 0.1, // Around Delhi
-    longitude: 77.20 + Math.random() * 0.1,
+const generateRandomCoords = (baseLat, baseLng) => ({
+    latitude: baseLat + (Math.random() - 0.5) * 0.005, // Small movement
+    longitude: baseLng + (Math.random() - 0.5) * 0.005,
 });
 
 const cabs = [
     {
         id: 1,
-        driver: "Rajesh Sharma",
-        passenger: { name: "Priya Mehta", isWoman: true },
-        location: {
-            latitude: 28.6139 + Math.random() * 0.01,
-            longitude: 77.209 + Math.random() * 0.01
+        driver: {
+            name: "Rajesh Sharma",
+            phoneNumber: "+919876543210",
+            picture: "https://randomuser.me/api/portraits/men/1.jpg",
         },
-        eta: "5 mins"
+        cab: {
+            number: "DL 1C 1234",
+            model: "Toyota Innova",
+        },
+        passenger: { name: "Priya Mehta", gender: 'female', phoneNumber: "+919876543211" },
+        location: { latitude: 28.67951, longitude: 77.09543 },
+        destination: { latitude: 28.63153, longitude: 77.08165 },
+        eta: "5 mins",
+        amount: 450,
+        route: { from: "Connaught Place", to: "India Gate" },
     },
     {
         id: 2,
-        driver: "Amit Kumar",
-        passenger: { name: "Rahul Verma", isWoman: false },
-        location: {
-            latitude: 28.6145 + Math.random() * 0.01,
-            longitude: 77.210 + Math.random() * 0.01
+        driver: {
+            name: "Amit Kumar",
+            phoneNumber: "+919876543212",
+            picture: "https://randomuser.me/api/portraits/men/2.jpg",
         },
-        eta: "3 mins"
+        cab: {
+            number: "DL 2C 5678",
+            model: "Maruti Swift",
+        },
+        passenger: { name: "Rahul Verma", gender: 'male', phoneNumber: "+919876543213" },
+        location: { latitude: 28.57837, longitude: 77.12299 },
+        destination: { latitude: 28.56249, longitude: 77.12673 },
+        eta: "3 mins",
+        amount: 300,
+        route: { from: "Saket", to: "Qutub Minar" },
     },
     {
         id: 3,
-        driver: "Sita Devi",
-        passenger: { name: "Anjali Singh", isWoman: true },
-        location: {
-            latitude: 28.6150 + Math.random() * 0.01,
-            longitude: 77.211 + Math.random() * 0.01
+        driver: {
+            name: "Sita Devi",
+            phoneNumber: "+919876543214",
+            picture: "https://randomuser.me/api/portraits/women/1.jpg",
         },
-        eta: "4 mins"
-    },
-    {
-        id: 4,
-        driver: "Vikram Singh",
-        passenger: { name: "Ravi Kumar", isWoman: false },
-        location: {
-            latitude: 28.6160 + Math.random() * 0.01,
-            longitude: 77.212 + Math.random() * 0.01
+        cab: {
+            number: "DL 3C 9012",
+            model: "Hyundai Creta",
         },
-        eta: "6 mins"
+        passenger: { name: "Anjali Singh", gender: 'female', phoneNumber: "+919876543215" },
+        location: { latitude: 28.61146, longitude: 77.22765 },
+        destination: { latitude: 28.58244, longitude: 77.26629 },
+        eta: "4 mins",
+        amount: 500,
+        route: { from: "Lajpat Nagar", to: "Lotus Temple" },
     },
-    {
-        id: 5,
-        driver: "Neha Gupta",
-        passenger: { name: "Sonia Sharma", isWoman: true },
-        location: {
-            latitude: 28.6170 + Math.random() * 0.01,
-            longitude: 77.213 + Math.random() * 0.01
-        },
-        eta: "2 mins"
-    },
-    {
-        id: 6,
-        driver: "Raj Malhotra",
-        passenger: { name: "Karan Mehta", isWoman: false },
-        location: {
-            latitude: 28.6180 + Math.random() * 0.01,
-            longitude: 77.214 + Math.random() * 0.01
-        },
-        eta: "7 mins"
-    },
-    {
-        id: 7,
-        driver: "Pooja Rani",
-        passenger: { name: "Deepak Sharma", isWoman: false },
-        location: {
-            latitude: 28.6190 + Math.random() * 0.01,
-            longitude: 77.215 + Math.random() * 0.01
-        },
-        eta: "8 mins"
-    },
-    {
-        id: 8,
-        driver: "Sunil Yadav",
-        passenger: { name: "Nisha Verma", isWoman: true },
-        location: {
-            latitude: 28.6200 + Math.random() * 0.01,
-            longitude: 77.216 + Math.random() * 0.01
-        },
-        eta: "1 min"
-    },
-    {
-        id: 9,
-        driver: "Anil Joshi",
-        passenger: { name: "Ritika Singh", isWoman: true },
-        location: {
-            latitude: 28.6210 + Math.random() * 0.01,
-            longitude: 77.217 + Math.random() * 0.01
-        },
-        eta: "9 mins"
-    },
-    {
-        id: 10,
-        driver: "Kiran Bhatia",
-        passenger: { name: "Mohit Sharma", isWoman: false },
-        location: {
-            latitude: 28.6220 + Math.random() * 0.01,
-            longitude: 77.218 + Math.random() * 0.01
-        },
-        eta: "10 mins"
-    },
+    // Add more cabs as needed (up to 10 from your original list)
 ];
-
-setInterval(() => {
-    wss.clients.forEach((client) => {
-        if (client.readyState === 1) {
-            client.send(JSON.stringify(cabs));
-        }
-    });
-}, 2000);
 
 wss.on("connection", (ws) => {
     console.log("Client connected");

@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
+
 
 const useWebSocket = (url) => {
     const [cabs, setCabs] = useState([]);
@@ -6,11 +7,13 @@ const useWebSocket = (url) => {
     useEffect(() => {
         const ws = new WebSocket(url);
 
+        ws.onopen = () => console.log("WebSocket connected");
         ws.onmessage = (event) => {
-            setCabs(JSON.parse(event.data));
+            const data = JSON.parse(event.data);
+            setCabs(data);
         };
-
-        ws.onclose = () => console.log("WebSocket closed");
+        ws.onclose = () => console.log("WebSocket disconnected");
+        ws.onerror = (error) => console.error("WebSocket error:", error);
 
         return () => ws.close();
     }, [url]);
