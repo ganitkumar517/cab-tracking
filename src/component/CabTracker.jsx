@@ -10,12 +10,11 @@ const CabTracker = () => {
     const [selectedCab, setSelectedCab] = useState(null);
 
     const { isLoaded, loadError } = useLoadScript({
-        googleMapsApiKey: "AIzaSyBuywDOSVqCEvDS35p9es6ke2U1C3Z5Yws", // Replace with your API key
+        googleMapsApiKey: import.meta.env.REACT_APP_GOOGLE_API_KEY, // Replace with your API key
     });
 
     if (loadError) return <p>Error loading maps</p>;
     if (!isLoaded) return <p>Loading Maps...</p>;
-    console.log(cabs, 'this ikjs ')
     return (
         <GoogleMap mapContainerStyle={mapContainerStyle} zoom={12} center={center}>
             {cabs.map((cab) => (

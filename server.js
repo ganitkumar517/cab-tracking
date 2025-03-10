@@ -36,3 +36,5 @@ wss.on("connection", (ws) => {
 
     ws.on("close", () => console.log("Client disconnected"));
 });
+
+console.log("WebSocket Server running on ws://localhost:8080");
