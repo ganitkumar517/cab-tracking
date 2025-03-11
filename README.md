@@ -1,12 +1,82 @@
-# React + Vite
+# Cab Tracking System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
+This project is a real-time cab tracking system built using React, WebSockets, and Google Maps API. The system displays available cabs on a map and provides detailed information about drivers, passengers, and ride details when a cab is selected.
 
-Currently, two official plugins are available:
+## Features
+- **Real-time Cab Location Tracking**: Uses WebSockets to fetch cab location updates.
+- **Google Maps Integration**: Displays cabs on a map with interactive markers.
+- **Cab & Passenger Details**: Shows driver and passenger information in a drawer when a cab is selected.
+- **Dynamic WebSocket Server**: Provides mock cab data and updates locations in real time.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies Used
+- **Frontend**:
+  - React.js
+  - Google Maps API
+  - Material UI (MUI)
+  - Tailwind CSS
+  - WebSockets
+- **Backend**:
+  - Node.js
+  - WebSocket Server
 
-## Expanding the ESLint configuration
+## Installation and Setup
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Prerequisites
+Ensure you have the following installed:
+- Node.js (>=16.0.0)
+- npm or yarn
+- Google Maps API Key
+
+### Steps to Run the Project
+
+#### 1. Clone the repository
+```sh
+ git clone <repo-url>
+ cd cab-tracking-system
+```
+
+#### 2. Install dependencies
+```sh
+ npm install
+ # or
+ yarn install
+```
+
+#### 3. Set up environment variables
+Create a `.env` file in the root directory and add:
+```sh
+REACT_APP_GOOGLE_API_KEY=your_google_maps_api_key
+```
+
+#### 4. Start the WebSocket Server
+```sh
+ node server.js
+```
+
+#### 5. Start the React App
+```sh
+ npm start
+ # or
+ yarn start
+```
+
+## Usage
+1. Open the app in the browser.
+2. Wait for the cabs to appear on the Google Map.
+3. Click on a cab to view its details in the drawer.
+4. Use the close button to hide the drawer.
+
+# Start Generation Here
+## Deployed Details
+
+- WebSocket API: [https://cab-tracking.onrender.com](https://cab-tracking.onrender.com) - This is the WebSocket server that provides real-time updates for the cabs.
+
+- React App: [https://cab-tracking.vercel.app](https://cab-tracking.vercel.app) - This is the deployed React application that allows users to track cabs on a Google Map interface.
+
+# End Generation Here
+
+
+## Author
+Ganit kumar
+
