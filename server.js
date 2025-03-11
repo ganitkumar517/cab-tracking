@@ -62,7 +62,132 @@ const cabs = [
         amount: 500,
         route: { from: "Lajpat Nagar", to: "Lotus Temple" },
     },
-    // Add more cabs as needed (up to 10 from your original list)
+    {
+        id: 4,
+        driver: {
+            name: "Vikram Singh",
+            phoneNumber: "+919876543216",
+            picture: "https://randomuser.me/api/portraits/men/3.jpg",
+        },
+        cab: {
+            number: "DL 4C 3456",
+            model: "Honda City",
+        },
+        passenger: { name: "Neha Gupta", gender: 'female', phoneNumber: "+919876543217" },
+        location: { latitude: 28.6762447, longitude: 77.1199612 },
+        destination: { latitude: 28.70406, longitude: 77.10249 },
+        eta: "6 mins",
+        amount: 400,
+        route: { from: "Dwarka", to: "IGI Airport" },
+    },
+    {
+        id: 5,
+        driver: {
+            name: "Ravi Kumar",
+            phoneNumber: "+919876543218",
+            picture: "https://randomuser.me/api/portraits/men/4.jpg",
+        },
+        cab: {
+            number: "DL 5C 7890",
+            model: "Ford EcoSport",
+        },
+        passenger: { name: "Sunil Sharma", gender: 'male', phoneNumber: "+919876543219" },
+        location: { latitude: 28.5355, longitude: 77.3910 },
+        destination: { latitude: 28.5355, longitude: 77.3910 },
+        eta: "7 mins",
+        amount: 350,
+        route: { from: "Noida", to: "Sector 18" },
+    },
+    {
+        id: 6,
+        driver: {
+            name: "Pooja Rani",
+            phoneNumber: "+919876543220",
+            picture: "https://randomuser.me/api/portraits/women/2.jpg",
+        },
+        cab: {
+            number: "DL 6C 1235",
+            model: "Kia Seltos",
+        },
+        passenger: { name: "Amit Singh", gender: 'male', phoneNumber: "+919876543221" },
+        location: { latitude: 28.5502229, longitude: 77.1850953 },
+        destination: { latitude: 28.6139, longitude: 77.2090 },
+        eta: "2 mins",
+        amount: 600,
+        route: { from: "Connaught Place", to: "Red Fort" },
+    },
+    {
+        id: 7,
+        driver: {
+            name: "Sunil Yadav",
+            phoneNumber: "+919876543222",
+            picture: "https://randomuser.me/api/portraits/men/5.jpg",
+        },
+        cab: {
+            number: "DL 7C 4567",
+            model: "Tata Nexon",
+        },
+        passenger: { name: "Rita Verma", gender: 'female', phoneNumber: "+919876543223" },
+        location: { latitude: 28.5434750, longitude: 77.2841624 },
+        destination: { latitude: 28.7041, longitude: 77.1025 },
+        eta: "8 mins",
+        amount: 500,
+        route: { from: "Gurgaon", to: "Cyber Hub" },
+    },
+    {
+        id: 8,
+        driver: {
+            name: "Karan Mehta",
+            phoneNumber: "+919876543224",
+            picture: "https://randomuser.me/api/portraits/men/6.jpg",
+        },
+        cab: {
+            number: "DL 8C 6789",
+            model: "Mahindra XUV500",
+        },
+        passenger: { name: "Sakshi Jain", gender: 'female', phoneNumber: "+919876543225" },
+        location: { latitude: 28.6139, longitude: 77.2090 },
+        destination: { latitude: 28.6139, longitude: 77.2090 },
+        eta: "10 mins",
+        amount: 700,
+        route: { from: "Faridabad", to: "Surajkund" },
+    },
+    {
+        id: 9,
+        driver: {
+            name: "Deepak Singh",
+            phoneNumber: "+919876543226",
+            picture: "https://randomuser.me/api/portraits/men/7.jpg",
+        },
+        cab: {
+            number: "DL 9C 2345",
+            model: "Renault Duster",
+        },
+        passenger: { name: "Rohit Sharma", gender: 'male', phoneNumber: "+919876543227" },
+        location: { latitude: 28.6113932, longitude: 77.1159480 },
+        destination: { latitude: 28.7041, longitude: 77.1025 },
+        eta: "9 mins",
+        amount: 550,
+        route: { from: "Delhi", to: "Chandni Chowk" },
+    },
+    {
+        id: 10,
+        driver: {
+            name: "Anil Kumar",
+            phoneNumber: "+919876543228",
+            picture: "https://randomuser.me/api/portraits/men/8.jpg",
+        },
+        cab: {
+            number: "DL 10C 3456",
+            model: "Skoda Kushaq",
+        },
+        passenger: { name: "Meera Singh", gender: 'female', phoneNumber: "+919876543229" },
+        location: { latitude: 28.7041, longitude: 77.1025 },
+        destination: { latitude: 28.7041, longitude: 77.1025 },
+        eta: "12 mins",
+        amount: 800,
+        route: { from: "Delhi", to: "Jama Masjid" },
+    },
 ];
 
 wss.on("connection", (ws) => {
