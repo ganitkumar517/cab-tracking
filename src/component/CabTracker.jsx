@@ -15,7 +15,7 @@ const mapContainerStyle = { width: "100%", height: "90vh", border: '3px solid bl
 const center = { lat: 28.6, lng: 77.2 }; // Default center (Delhi)
 
 const CabTracker = () => {
-    const cabs = useWebSocket("ws://localhost:8080");
+    const cabs = useWebSocket("wss://cab-tracking.onrender.com");
     const [selectedCab, setSelectedCab] = useState(null);
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const [directions, setDirections] = useState(null);
