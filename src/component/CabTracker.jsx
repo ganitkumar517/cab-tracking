@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { GoogleMap, Marker, useLoadScript, DirectionsService, DirectionsRenderer } from "@react-google-maps/api";
+import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
 import useWebSocket from "../hooks/useWebSocket";
 import { Drawer, Typography, Box, Avatar } from "@mui/material";
 import { Phone, DirectionsCar, Person } from "@mui/icons-material";
@@ -11,7 +11,7 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PriceChangeIcon from '@mui/icons-material/PriceChange';
 import FemaleIcon from '@mui/icons-material/Female';
 
-const mapContainerStyle = { width: "100%", height: "100vh" };
+const mapContainerStyle = { width: "100%", height: "90vh", border: '3px solid black', borderRadius: '8px' };
 const center = { lat: 28.6, lng: 77.2 }; // Default center (Delhi)
 
 const CabTracker = () => {
@@ -36,8 +36,8 @@ const CabTracker = () => {
                         position={{ lat: cab.location.latitude, lng: cab.location.longitude }}
                         icon={{
                             url: cab.passenger.gender === 'female'
-                                ? "http://maps.google.com/mapfiles/ms/icons/pink-dot.png"
-                                : "http://maps.google.com/mapfiles/ms/icons/blue-dot.png",
+                                ? "https://res.cloudinary.com/dydvnnl6r/image/upload/v1741626602/temp-icons/hnv7o8agssxq3jbtxfey.svg"
+                                : "https://res.cloudinary.com/dydvnnl6r/image/upload/v1741626602/temp-icons/buff4xldzzhfghbggezv.svg",
                             scaledSize: new window.google.maps.Size(40, 40),
                         }}
                         animation={window.google.maps.Animation.DROP} // Smooth movement effect
@@ -45,7 +45,6 @@ const CabTracker = () => {
                             setSelectedCab(cab);
                             setIsDrawerOpen(true);
                             // Center the map on the selected cab's destination
-                            map.panTo({ lat: cab.destination.latitude, lng: cab.destination.longitude });
                         }}
                     />
                 ))}
@@ -61,8 +60,8 @@ const CabTracker = () => {
                         <button className="underline hover:text-blue-700" onClick={() => setIsDrawerOpen(false)}>Close</button>
                     </div>
                     {selectedCab && (
-                        <div className="px-10 pt-6 flex flex-col gap-10">
-                            <div className="flex justify-between">
+                        <div className="md:px-10 px-2 pt-6 flex flex-col gap-10">
+                            <div className="flex flex-col md:flex-row gap-6 justify-between">
                                 <div className="flex flex-col gap-4">
                                     <h2 className="font-bold  text-2xl">Driver Details:-</h2>
                                     <div className="flex items-center gap-4">
@@ -120,7 +119,7 @@ const CabTracker = () => {
                                 <h2 className="font-bold  text-2xl">
                                     Ride Details:-
                                 </h2>
-                                <div className="flex justify-around gap-2">
+                                <div className="flex flex-col md:flex-row justify-around gap-2">
                                     <div className="flex flex-col gap-4">
                                         <div className="flex">
                                             <MyLocationIcon sx={{ mr: 1 }} />
